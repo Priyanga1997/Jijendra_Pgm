@@ -1,0 +1,49 @@
+﻿
+@model Vidly.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+
+@if (Model != null)
+{
+    if (Model.BirthDate != null)
+    {
+        <ul>
+            <li>
+                @Model.CustomerName
+
+            </li>
+            <li>
+                @Model.MembershipType.MembershipTypeName
+
+            </li>
+            <li>
+                @Model.BirthDate
+            </li>
+        </ul>
+    }
+
+    else
+    {
+        <ul>
+            <li>
+                @Model.CustomerName
+
+            </li>
+            <li>
+                @Model.MembershipType.MembershipTypeName
+
+            </li>
+
+        </ul>
+    }
+}
+else
+{
+
+    < h3 > No records found</ h3 >
+}
+

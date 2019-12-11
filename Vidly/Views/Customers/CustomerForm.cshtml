@@ -1,0 +1,42 @@
+﻿@model Vidly.ViewModel.CustomerFormviewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+@using (Html.BeginForm("Create", "Customers"))
+{
+    <div class="form-group">
+            @Html.Hidden("CustomerId")
+            @Html.HiddenFor(a => a.Customer.CustomerId, new { @class = "form-control" })
+        </div>
+    @*<div class="form-group">
+        @Html.LabelFor(a => a.Customer.CustomerId)
+        @Html.TextBoxFor(a => a.Customer.CustomerId, new { @class = "form-control" })
+    </div>*@
+    <div class="form-group">
+        @Html.LabelFor(a => a.Customer.CustomerName)
+        @Html.TextBoxFor(a => a.Customer.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a=>a.Customer.CustomerName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.Customer.BirthDate)
+        @Html.TextBoxFor(a => a.Customer.BirthDate, new { @class = "form-control" })
+
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(a => a.Customer.IsSubscribedToNewsLetter)IsSubscribedToNewsLetter?
+        </label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.Customer.MembershipTypeId)
+        @Html.DropDownListFor(a => a.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "MembershipTypeName"), "Select Membership Type", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+
+
+
+}
+
